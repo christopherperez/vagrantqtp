@@ -1,0 +1,15 @@
+[submodule "puppet/modules/puppetlabs-apt"]
+	path = puppet/modules/puppetlabs-apt
+	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "puppet/modules/puppet-wget"]
+	path = puppet/modules/puppet-wget
+	url = https://github.com/maestrodev/puppet-wget.git
+[submodule "puppet/modules/puppetlabs-mysql"]
+	path = puppet/modules/puppetlabs-mysql
+	url = https://github.com/puppetlabs/puppetlabs-mysql.git
+[submodule "puppet/modules/puppet-samba"]
+	path = puppet/modules/puppet-samba
+	url = https://github.com/thias/puppet-samba.git
+[submodule "puppet/modules/puppetlabs-stdlib"]
+	path = puppet/modules/puppetlabs-stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
