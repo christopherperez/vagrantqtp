@@ -1,4 +1,4 @@
-# A Virtual Machine for Ruby on Rails Core Development - UBUNTU 12.04
+# A Virtual Machine for QTP purposes - UBUNTU 14.04.1
 
 ## Requirements
 
