@@ -25,7 +25,8 @@ Vagrant.configure('2') do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  #config.vm.network "public_network", bridge: 'eth0'
+  config.vm.network "public_network", bridge: 'eth0'
+  config.vm.network "public_network", bridge: 'eth0'
   
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
