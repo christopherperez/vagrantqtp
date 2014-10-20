@@ -30,7 +30,7 @@ ssh vagrant@192.168.40.100
 
 * System packets: autoconf build-essential
 
-* Samba with Puppet
+* Desktop enviroment
 
 * Script for create dirs and other staff
 

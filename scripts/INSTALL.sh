@@ -1,35 +1,38 @@
 #!/bin/bash
+as_qtpteam="sudo -u qtpteam -H bash -l -c"
 
 function consola {
-   sudo apt-get install -y zsh
-   curl -L http://install.ohmyz.sh | sh
-   sudo chsh -s /usr/bin/zsh
-   sudo su qtpteam
-   chsh -s /usr/bin/zsh
+   apt-get install -y zsh curl
+   $as_qtpteam curl -L http://install.ohmyz.sh | sh
+   $as_qtpteam chsh -s /usr/bin/zsh
 }
 function directorios {
    cd /mnt
-   sudo mkdir Gasnatural
-   sudo chmod ug+rwx Gasnatural
-   sudo mkdir QTP_Scripts
-   sudo chmod ug+rwx QTP_Scripts
-   sudo mkdir y
-   sudo chmod ug+rwx y
+   mkdir Gasnatural
+   chmod ug+rwx Gasnatural
+   mkdir QTP_Scripts
+   chmod ug+rwx QTP_Scripts
+   mkdir y
+   chmod ug+rwx y
+   mkdir QTP_Scripts_Minoristas
+   chmod ug+rwx QTP_Scripts_Minoristas
+   mkdir y_Minoristas
+   chmod ug+rwx y_Minoristas
    cd /home
-   sudo mkdir qtpteam
+   mkdir qtpteam
    cd qtpteam
-   sudo mkdir Escritorio
+   mkdir Escritorio
    cd Escritorio
-   sudo mkdir y_local
-   sudo chmod ug+rwx y_local
-   sudo mkdir QTPScripts_local
-   sudo chmod ug+rwx QTPScripts_local
-   sudo mkdir Compartida
-   sudo chmod ug+rwx Compartida
+   mkdir y_local
+   chmod ug+rwx y_local
+   mkdir QTPScripts_local
+   chmod ug+rwx QTPScripts_local
+   mkdir Compartida
+   chmod ug+rwx Compartida
 }
 
 function samba {
-   sudo apt-get install -y samba smbclient
+   apt-get install -y samba smbclient
    cd /home/vagrant/myapp/scripts
    sudo rm /etc/samba/smb.conf
    cp smb.conf /etc/samba/
@@ -38,11 +41,31 @@ function samba {
    echo "###################### sudo smbpasswd -e qtpteam"
 }
 
+function escritorio {
+   apt-get install -y gnome-core xfce4 firefox
+   #sudo apt-get install -y xubuntu-desktop
+   apt-get install -y vnc4server
+   cd /home/vagrant/myapp/scripts
+   $as_qtpteam cp xtartup ~/.vnc/
+}
+
 echo "shell script install"
-sudo apt-get install -y ubuntu-desktop
-sudo apt-get install -y openvpn
-sudo apt-get install -y openssh-server
+apt-get install -y openvpn
+apt-get install -y openssh-server gedit nano vim
+echo "#########################################"
+echo "CREANDO DIRECTORIOS NECESARIOS PARA SAMBA"
+echo "#########################################"
 directorios
+echo "#########################################"
+echo "          INSTALANDO OH MY ZSH"
+echo "#########################################"
 consola
+echo "#########################################"
+echo "           CONFIGURANDO SAMBA"
+echo "#########################################"
 samba
+echo "#########################################"
+echo "        INSTALANDO ENTORNO GRÁFICO"
+echo "#########################################"
+escritorio
 exit 0

@@ -26,7 +26,6 @@ Vagrant.configure('2') do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   config.vm.network "public_network", bridge: 'eth0'
-  config.vm.network "public_network", bridge: 'eth0'
   
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
@@ -44,7 +43,7 @@ Vagrant.configure('2') do |config|
   #
   config.vm.provider "virtualbox" do |vb|
      # # Don't boot with headless mode
-     vb.gui = true
+     #vb.gui = true
      #
      # # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "2048"]
@@ -62,14 +61,14 @@ Vagrant.configure('2') do |config|
   # config.vbguest.iso_path = "#{ENV['HOME']}/Downloads/VBoxGuestAdditions.iso"
   # or
   # config.vbguest.iso_path = "http://company.server/VirtualBox/%{version}/VBoxGuestAdditions.iso"
-  #config.vbguest.iso_path = "http://download.virtualbox.org/virtualbox/4.3.10/VBoxGuestAdditions_4.3.10.iso"
+  config.vbguest.iso_path = "http://download.virtualbox.org/virtualbox/4.3.10/VBoxGuestAdditions_4.3.10.iso"
   
   # set auto_update to false, if you do NOT want to check the correct 
   # additions version when booting this machine
-  #config.vbguest.auto_update = false
+  config.vbguest.auto_update = false
 
   # do NOT download the iso file from a webserver
-  #config.vbguest.no_remote = true
+  config.vbguest.no_remote = false
   
 
   config.vm.provision :puppet do |puppet|
