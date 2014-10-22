@@ -1,5 +1,7 @@
 #!/bin/bash
 as_qtpteam="sudo -u qtpteam -H bash -l -c"
+password=qtpteam
+user=qtpteam
 
 function consola {
    apt-get install -y zsh curl
@@ -35,23 +37,27 @@ function samba {
    apt-get install -y samba smbclient
    cd /home/vagrant/myapp/scripts
    sudo rm /etc/samba/smb.conf
-   cp smb.conf /etc/samba/
+   sudo cp smb.conf /etc/samba/
    echo "recuerda crear el usario samba para qtpteam"
    echo "###################### sudo smbpasswd -a qtpteam"
    echo "###################### sudo smbpasswd -e qtpteam"
 }
 
 function escritorio {
-   apt-get install -y gnome-core xfce4 firefox
+   apt-get install -y gnome-core xfce4 firefox gnome-tweak-tool
    #sudo apt-get install -y xubuntu-desktop
    apt-get install -y vnc4server
    cd /home/vagrant/myapp/scripts
    $as_qtpteam cp xtartup ~/.vnc/
 }
 
+function usuarios {
+   echo -e "$password\n$password\n" | sudo passwd $user
+}
 echo "shell script install"
 apt-get install -y openvpn
-apt-get install -y openssh-server gedit nano vim
+apt-get install -y openssh-server gedit nano vim linux-image-extra-virtual dkms build-essential linux-headers-generic
+usuarios
 echo "#########################################"
 echo "CREANDO DIRECTORIOS NECESARIOS PARA SAMBA"
 echo "#########################################"
