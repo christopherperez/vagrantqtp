@@ -57,6 +57,7 @@ function usuarios {
 echo "shell script install"
 apt-get install -y openvpn
 apt-get install -y openssh-server gedit nano vim linux-image-extra-virtual dkms build-essential linux-headers-generic
+apt-get install subversion subversion-tools
 usuarios
 echo "#########################################"
 echo "CREANDO DIRECTORIOS NECESARIOS PARA SAMBA"
